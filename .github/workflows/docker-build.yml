@@ -69,7 +69,6 @@ jobs:
         name: Set tags
         run: |
           img_path_ghcr="ghcr.io/${{ env.REPO_NAMESPACE }}/${{ env.REPO_NAME }}"
-          img_path_dhub="${{ secrets.DOCKERHUB_USER }}/${{ env.REPO_NAME }}"
           
           base_tag="v2-cuda-${{ matrix.build.cuda }}-${{ env.UBUNTU_VERSION }}"
 
