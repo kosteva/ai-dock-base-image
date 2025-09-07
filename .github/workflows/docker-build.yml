@@ -15,15 +15,18 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        cuda:
-          - 12.9.0
-          - 13.0.0
-        level:
-          - "base"
-          - "runtime"
-          - "devel"
-          - "cudnn-runtime"
-          - "cudnn-devel"
+        build:
+          latest:
+            - false
+          cuda:
+            - 12.9.0
+            - 13.0.0
+          level:
+            - "base"
+            - "runtime"
+            - "devel"
+            - "cudnn-runtime"
+            - "cudnn-devel"
     steps:
       -
         name: Free Space
