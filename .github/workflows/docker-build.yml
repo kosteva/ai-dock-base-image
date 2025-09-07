@@ -19,6 +19,9 @@ jobs:
         - {latest: "false", cuda: "13.0.0-base"}
         - {latest: "false", cuda: "13.0.0-cudnn-runtime"}
         - {latest: "false", cuda: "13.0.0-cudnn-devel"}
+        - {latest: "false", cuda: "12.9.1-base"}
+        - {latest: "false", cuda: "12.9.1-cudnn-runtime"}
+        - {latest: "false", cuda: "12.9.1-cudnn-devel"}
         # - {latest: "false", cuda: "12.1.1-base"}
         # - {latest: "false", cuda: "12.1.1-cudnn8-runtime"}
         # - {latest: "false", cuda: "12.1.1-cudnn8-devel"}
