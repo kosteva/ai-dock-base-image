@@ -18,9 +18,13 @@ jobs:
         latest:
           - false
         cuda:
-          - 13.0.0-base
-          - 12.9.1-base
-          - 12.8.1-base
+          - 13.0.0
+          - 12.9.1
+          - 12.8.1
+        level:
+          - base
+          - runtime
+          - devel
     steps:
       -
         name: Free Space
@@ -59,7 +63,7 @@ jobs:
         run: |
           img_path_ghcr="ghcr.io/${{ env.REPO_NAMESPACE }}/${{ env.REPO_NAME }}"
           
-          base_tag="v2-cuda-${{ matrix.cuda }}-${{ env.UBUNTU_VERSION }}"
+          base_tag="v2-cuda-${{ matrix.cuda }}-${{ matrix.level }}-${{ env.UBUNTU_VERSION }}"
 
           if [[ ${{ matrix.latest }} == "true" ]]; then
               echo "Marking latest"
@@ -74,9 +78,9 @@ jobs:
         with:
           context: build
           build-args: |
-            IMAGE_BASE=nvidia/cuda:${{ matrix.cuda }}-ubuntu${{ env.UBUNTU_VERSION }}
+            IMAGE_BASE=nvidia/cuda:${{ matrix.cuda }}-${{ matrix.level }}-ubuntu${{ env.UBUNTU_VERSION }}
             XPU_TARGET=NVIDIA_GPU
-            CUDA_STRING=${{ matrix.cuda }}
+            CUDA_STRING=${{ matrix.cuda }}-${{ matrix.level }}
           push: true
           provenance: false
           tags: ${{ env.TAGS }}
